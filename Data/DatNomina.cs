@@ -25,6 +25,8 @@ namespace Data
         {
             using (Generación29Entities db = new Generación29Entities())
             {
+                db.Configuration.LazyLoadingEnabled = false;
+
                 return db.Nomina.Include("Empleados").Include("Conceptos")
                 .Where(x=> x.IDNomina == id).FirstOrDefault();
             }
@@ -34,6 +36,8 @@ namespace Data
         {
             using (Generación29Entities db = new Generación29Entities())
             {
+                db.Configuration.LazyLoadingEnabled = false;
+
                 return db.Nomina.Include("Empleados").Include("Conceptos")
                 .Where(x => x.Empleados.IDEmpleado == idEmpleado)
                 .OrderByDescending(x=> x.FechaPago)
