@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Generación29Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Conceptos">
+          <Key>
+            <PropertyRef Name="IdConcepto" />
+          </Key>
+          <Property Name="IdConcepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Concepto" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="IDEmpleado" />
+          </Key>
+          <Property Name="IDEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RFC" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="IDNomina" />
+          </Key>
+          <Property Name="IDEmpleado" Type="int" Nullable="false" />
+          <Property Name="IDNomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaPago" Type="date" Nullable="false" />
+          <Property Name="IDConcepto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProyectoFinalTI">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMa" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RFC" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Edad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rol" Type="bit" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Empleados_ProyectoFinalTI">
+          <End Role="ProyectoFinalTI" Type="Self.ProyectoFinalTI" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProyectoFinalTI">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomina_Conceptos">
+          <End Role="Conceptos" Type="Self.Conceptos" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conceptos">
+              <PropertyRef Name="IdConcepto" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="IDConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomina_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="IDEmpleado" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="IDEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Generación29ModelStoreContainer">
+          <EntitySet Name="Conceptos" EntityType="Self.Conceptos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomina" EntityType="Self.Nomina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProyectoFinalTI" EntityType="Self.ProyectoFinalTI" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Empleados_ProyectoFinalTI" Association="Self.FK_Empleados_ProyectoFinalTI">
+            <End Role="ProyectoFinalTI" EntitySet="ProyectoFinalTI" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomina_Conceptos" Association="Self.FK_Nomina_Conceptos">
+            <End Role="Conceptos" EntitySet="Conceptos" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomina_Empleados" Association="Self.FK_Nomina_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Generación29Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Conceptos">
+          <Key>
+            <PropertyRef Name="IdConcepto" />
+          </Key>
+          <Property Name="IdConcepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Nomina" Relationship="Self.FK_Nomina_Conceptos" FromRole="Conceptos" ToRole="Nomina" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="IDEmpleado" />
+          </Key>
+          <Property Name="IDEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoPa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoMa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProyectoFinalTI" Relationship="Self.FK_Empleados_ProyectoFinalTI" FromRole="Empleados" ToRole="ProyectoFinalTI" />
+          <NavigationProperty Name="Nomina" Relationship="Self.FK_Nomina_Empleados" FromRole="Empleados" ToRole="Nomina" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="IDNomina" />
+          </Key>
+          <Property Name="IDEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="IDNomina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Monto" Type="Decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDConcepto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Conceptos" Relationship="Self.FK_Nomina_Conceptos" FromRole="Nomina" ToRole="Conceptos" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Nomina_Empleados" FromRole="Nomina" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="ProyectoFinalTI">
+          <Key>
+            <PropertyRef Name="IDUsuario" />
+          </Key>
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoPa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoMa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Foto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="Boolean" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Empleados" Relationship="Self.FK_Empleados_ProyectoFinalTI" FromRole="ProyectoFinalTI" ToRole="Empleados" />
+        </EntityType>
+        <Association Name="FK_Nomina_Conceptos">
+          <End Role="Conceptos" Type="Self.Conceptos" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conceptos">
+              <PropertyRef Name="IdConcepto" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="IDConcepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleados_ProyectoFinalTI">
+          <End Role="ProyectoFinalTI" Type="Self.ProyectoFinalTI" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProyectoFinalTI">
+              <PropertyRef Name="IDUsuario" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="IDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomina_Empleados">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="IDEmpleado" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="IDEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Generación29Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Conceptos" EntityType="Self.Conceptos" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="Nomina" EntityType="Self.Nomina" />
+          <EntitySet Name="ProyectoFinalTI" EntityType="Self.ProyectoFinalTI" />
+          <AssociationSet Name="FK_Nomina_Conceptos" Association="Self.FK_Nomina_Conceptos">
+            <End Role="Conceptos" EntitySet="Conceptos" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleados_ProyectoFinalTI" Association="Self.FK_Empleados_ProyectoFinalTI">
+            <End Role="ProyectoFinalTI" EntitySet="ProyectoFinalTI" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomina_Empleados" Association="Self.FK_Nomina_Empleados">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Generación29ModelStoreContainer" CdmEntityContainer="Generación29Entities">
+          <EntitySetMapping Name="Conceptos">
+            <EntityTypeMapping TypeName="Generación29Model.Conceptos">
+              <MappingFragment StoreEntitySet="Conceptos">
+                <ScalarProperty Name="IdConcepto" ColumnName="IdConcepto" />
+                <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="Generación29Model.Empleados">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPa" ColumnName="ApellidoPa" />
+                <ScalarProperty Name="ApellidoMa" ColumnName="ApellidoMa" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nomina">
+            <EntityTypeMapping TypeName="Generación29Model.Nomina">
+              <MappingFragment StoreEntitySet="Nomina">
+                <ScalarProperty Name="IDEmpleado" ColumnName="IDEmpleado" />
+                <ScalarProperty Name="IDNomina" ColumnName="IDNomina" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="IDConcepto" ColumnName="IDConcepto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProyectoFinalTI">
+            <EntityTypeMapping TypeName="Generación29Model.ProyectoFinalTI">
+              <MappingFragment StoreEntitySet="ProyectoFinalTI">
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPa" ColumnName="ApellidoPa" />
+                <ScalarProperty Name="ApellidoMa" ColumnName="ApellidoMa" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

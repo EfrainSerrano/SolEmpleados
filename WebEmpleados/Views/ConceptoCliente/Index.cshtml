@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Data.Model.Conceptos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+
+<h2>Index</h2>
+
+<div class="d-flex justify-content-end align-items-center mb-2">
+    <a href="/ConceptoCliente/Create" data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Agregar Concepto</a>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Concepto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Concepto)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdConcepto }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdConcepto }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdConcepto })
+            </td>
+        </tr>
+    }
+
+</table>

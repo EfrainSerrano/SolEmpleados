@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Data.Model.Empleados>
+
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<h2>Inicio</h2>
+
+<p>
+    <div class="d-flex align-content-center justify-content-end">
+        <a href="/Home/Create" data-bs-target=".add-new" class="btn btn-primary"><i class="bx bx-plus me-1"></i> Agregar Empleado</a>
+    </div>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoMa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RFC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProyectoFinalTI.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RFC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProyectoFinalTI.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDEmpleado }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDEmpleado }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDEmpleado })
+        </td>
+    </tr>
+}
+
+</table>

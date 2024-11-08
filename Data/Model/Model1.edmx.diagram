@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64c9733c56014a57b299014f516e414f" Name="Diagram1">
+        <EntityTypeShape EntityType="Generación29Model.Conceptos" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Generación29Model.Empleados" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Generación29Model.Nomina" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Generación29Model.ProyectoFinalTI" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Generación29Model.FK_Nomina_Conceptos" ManuallyRouted="false" />
+        <AssociationConnector Association="Generación29Model.FK_Empleados_ProyectoFinalTI" ManuallyRouted="false" />
+        <AssociationConnector Association="Generación29Model.FK_Nomina_Empleados" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
