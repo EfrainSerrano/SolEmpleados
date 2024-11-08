@@ -1,4 +1,5 @@
-﻿
+﻿@model Data.Model.ProyectoFinalTI
+
 @{
     Layout = null;
 }
@@ -9,78 +10,80 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet"/>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/CSS/StyleSheet1.css" rel="stylesheet" />
+    <link href="~/CSS/Login.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
         @*<center>
             <br />*@
-            @if (TempData["error"] != null)
-            {
-                <div class="alert alert-danger">@TempData["error"]</div>
-            }
-            @if (TempData["mensaje"] != null)
-            {
-                <div class="alert alert-success">@TempData["mensaje"]</div>
-            }
-            @*<br />
-            <form class="form-control">
-                <br />
-                <h2>Inicio de sesion</h2>
-                <br />
-                <input type="text" name="RFC" value="" />
-                <br />
-                <input class="mt-2" type="password" name="Contrasena" value="" />
-                <br />
-                <input type="submit" name="name" value="Ingresar" formaction="/UsuarioCliente/Validar" />
-                <a href="/UsuarioCliente/Create">Registrar nuevo usuario</a>
-            </form>
-        </center>
-    </div>*@
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["error"]</div>
+        }
+        @if (TempData["mensaje"] != null)
+        {
+            <div class="alert alert-success">@TempData["mensaje"]</div>
+        }
+        @*<br />
+                    <form class="form-control">
+                        <br />
+                        <h2>Inicio de sesion</h2>
+                        <br />
+                        <input type="text" name="RFC" value="" />
+                        <br />
+                        <input class="mt-2" type="password" name="Contrasena" value="" />
+                        <br />
+                        <input type="submit" name="name" value="Ingresar" formaction="/UsuarioCliente/Validar" />
+                        <a href="/UsuarioCliente/Create">Registrar nuevo usuario</a>
+                    </form>
+                </center>
+            </div>*@
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <br>
-    <br>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card-group mb-0">
-                    <div class="card p-4">
-                        <div class="card-body">
-                            @using (Html.BeginForm())
-                            {
-                                <div class="text-center">
-                                    <img src="~/Img/logoHead.png" />
-                                </div>
-                                <h1>Inicio de sesión</h1>
-                                <p class="text-muted">Inicia sesión en tu cuenta</p>
-
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" name="RFC" placeholder="RFC" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
-                                <div class="input-group mb-4">
-                                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                                    <input type="password" name="Contrasena" class="form-control" placeholder="Contraseña">
-                                </div>
-                                <div class="row text-center">
-                                    <div class="col">
-                                        <input type="submit" formaction="/UsuarioCliente/Validar" class="btn btn-dark px-4" value="Iniciar Sesión">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <br>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card-group mb-0">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="text-center">
+                                        <img src="~/Img/logoHead.png" />
                                     </div>
-                                </div>
+                                    <h1>Inicio de sesión</h1>
+                                    <p class="text-muted">Inicia sesión en tu cuenta</p>
 
-                            }
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                        <input type="text" class="form-control" name="RFC" placeholder="RFC" aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                                        <input type="password" name="Contrasena" class="form-control" placeholder="Contraseña">
+                                    </div>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <input type="submit" formaction="/UsuarioCliente/Validar" class="btn btn-dark px-4" value="Iniciar Sesión">
+                                        </div>
+                                    </div>
 
-                        </div> 
-                    </div>
-                    <div class="card text-white bg-dark py-5 d-md-down-none" style="width:44%">
-                        <div class="card-body text-center">
-                            <div class="row h-100">
-                                <div class="col d-flex flex-column align-items-center justify-content-center">
-                                    <h2>Crear cuenta</h2>
-                                    <p>¿Eres nuevo aquí?</p>
-                                    <a href="/UsuarioCliente/Create" class="btn btn-dark active mt-3">Registrate ahora!</a>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="card text-white bg-dark py-5 d-md-down-none" style="width:44%">
+                            <div class="card-body text-center">
+                                <div class="row h-100">
+                                    <div class="col d-flex flex-column align-items-center justify-content-center">
+                                        <h2>Crear cuenta</h2>
+                                        <p>¿Eres nuevo aquí?</p>
+                                        <a href="/UsuarioCliente/Create" class="btn btn-dark active mt-3">Registrate ahora!</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +92,107 @@
             </div>
         </div>
     </div>
-</div>
+
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3"><span>Ingresar</span><span>Registrarse</span></h6>
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                        <label for="reg-log"></label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+
+                                            <img class="mb-5" src="~/Img/logoHead.png"/>
+
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="text" name="RFC" class="form-style" placeholder="Usuario" autocomplete="off">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="Contrasena" class="form-style" placeholder="Contraseña" autocomplete="off">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+
+                                                <input type="submit" formaction="/UsuarioCliente/Validar" class="btn mt-4" value="Ingresar"></input>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+
+
+                                            @using (Html.BeginForm())
+                                            {
+                                                @Html.AntiForgeryToken()
+
+                                                <form>
+                                                    <div class="form-group mb-2">
+                                                        <input type="text" name="Nombre" class="form-style" placeholder="Nombre" autocomplete="off">
+                                                        <i class="input-icon uil uil-user"></i>
+                                                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="text" name="ApellidoPa" class="form-style" placeholder="Apellido paterno" autocomplete="off">
+                                                        <i class="input-icon uil uil-user"></i>
+                                                        @Html.ValidationMessageFor(model => model.ApellidoPa, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="text" name="ApellidoMa" class="form-style" placeholder="Apellido materno" autocomplete="off">
+                                                        <i class="input-icon uil uil-user"></i>
+                                                        @Html.ValidationMessageFor(model => model.ApellidoMa, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="text" name="RFC" class="form-style" placeholder="RFC" autocomplete="off">
+                                                        <i class="input-icon uil uil-id-card"></i>
+                                                        @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="number" name="Edad" class="form-style" placeholder="Edad" autocomplete="off">
+                                                        <i class="input-icon uil uil-calendar-alt"></i>
+                                                        @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="file" name="Foto" class="form-style" placeholder="Foto" autocomplete="off">
+                                                        <i class="input-icon uil uil-image"></i>
+                                                        @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <div class="form-group mb-2">
+                                                        <input type="password" name="Contrasena" class="form-style" placeholder="Contraseña" autocomplete="off">
+                                                        <i class="input-icon uil uil-lock"></i>
+                                                        @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                    <input type="submit" formaction="/UsuarioCliente/Create" class="btn mt-4">
+                                                </form>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

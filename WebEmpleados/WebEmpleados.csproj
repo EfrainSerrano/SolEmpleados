@@ -126,6 +126,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="CSS\Empleados.css" />
+    <Content Include="CSS\Login.css" />
     <Content Include="CSS\StyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Img\logoHead.png" />
